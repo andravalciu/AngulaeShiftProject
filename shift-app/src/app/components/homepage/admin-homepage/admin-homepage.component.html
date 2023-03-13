@@ -1,1 +1,2 @@
 <p>admin-homepage works!</p>
+<h1 *ngIf="user$ | async as user">Welcome, {{user.email}}! </h1>

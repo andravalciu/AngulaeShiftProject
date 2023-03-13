@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" class="center">
+    ANGULAR shifts project
+
+    <ng-container *ngIf="authService.currentAdmin$ | async as admin; else loginButton">
+        <button mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+    </ng-container>
+
+    <ng-template #loginButton>
+        <button mat-button><mat-icon>login</mat-icon>Login as admin</button>
+    </ng-template>
+   
+</mat-toolbar>
+
+
+<router-outlet>
+  
+</router-outlet>
