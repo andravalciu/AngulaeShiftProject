@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
 import { Auth, authState } from '@angular/fire/auth';
-import { from } from 'rxjs';
+import { from, switchMap } from 'rxjs';
+import { formatCurrency } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +18,21 @@ export class AuthentificationService {
 
   login(username: string, password: string) {
     return from(signInWithEmailAndPassword(this.auth, username, password));
+  }
+
+  adminSignUp(
+    fName: string,
+    lName: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    age: string
+  ) {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(
+      switchMap(({ user }) => updateProfile(user, { displayName: fName }))
+    );
   }
 
   logout() {
