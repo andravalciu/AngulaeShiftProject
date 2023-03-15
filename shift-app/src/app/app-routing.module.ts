@@ -5,24 +5,30 @@ import { AdminLoginComponent } from './components/login/admin-login/admin-login.
 import { AdminRegisterComponent } from './components/register/admin-register/admin-register.component';
 import { AdminAllShiftsComponent } from './components/shifts/admin-all-shifts/admin-all-shifts.component';
 import { AdminAllWorkersComponent } from './components/workers/admin-all-workers/admin-all-workers.component';
+import {
+  canActivate,
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+} from '@angular/fire/auth-guard';
+
+const redirectToLogin = () => redirectUnauthorizedTo(['adminlogin']);
+const redirectToHome = () => redirectLoggedInTo(['adminhome']);
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'adminhomepage',
-    pathMatch: 'full',
-  },
-  {
     path: 'adminhome',
     component: AdminHomepageComponent,
+    ...canActivate(redirectToLogin),
   },
   {
     path: 'adminlogin',
     component: AdminLoginComponent,
+    ...canActivate(redirectToHome),
   },
   {
     path: 'adminregister',
     component: AdminRegisterComponent,
+    ...canActivate(redirectToHome),
   },
   { path: 'allshifts', component: AdminAllShiftsComponent },
   { path: 'allworkers', component: AdminAllWorkersComponent },

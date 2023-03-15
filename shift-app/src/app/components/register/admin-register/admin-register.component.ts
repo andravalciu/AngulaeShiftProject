@@ -31,7 +31,7 @@ export function passwordsMatchValidator(): ValidatorFn {
 })
 export class AdminRegisterComponent implements OnInit {
   submit() {
-    if (this.adminSignUpForm.valid) return;
+    if (!this.adminSignUpForm.valid) return;
 
     const { fName, lName, email, password, confirmPassword, age } =
       this.adminSignUpForm.value;
