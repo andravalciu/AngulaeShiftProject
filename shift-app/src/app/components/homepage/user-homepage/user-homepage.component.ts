@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthentificationService } from 'src/app/service/authentification.service';
 
 @Component({
   selector: 'app-user-homepage',

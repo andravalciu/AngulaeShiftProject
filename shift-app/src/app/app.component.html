@@ -6,7 +6,9 @@
     </ng-container>
 
     <ng-template #loginButton>
-        <button mat-button><mat-icon>login</mat-icon>Login as admin</button>
+        <button mat-button routerLink="userlogin"><mat-icon>login</mat-icon>Login as user</button>
+
+        <button mat-button routerLink="adminlogin"><mat-icon>login</mat-icon>Login as admin</button>
     </ng-template>
    
 </mat-toolbar>

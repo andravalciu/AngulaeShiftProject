@@ -23,6 +23,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { UserLoginComponent } from './components/login/user-login/user-login.component';
 import { UserRegisterComponent } from './components/register/user-register/user-register.component';
 import { UserHomepageComponent } from './components/homepage/user-homepage/user-homepage.component';
+import { UserShiftsComponentComponent } from './user-shifts-component/user-shifts-component.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UserHomepageComponent } from './components/homepage/user-homepage/user-
     UserLoginComponent,
     UserRegisterComponent,
     UserHomepageComponent,
+    UserShiftsComponentComponent,
   ],
   imports: [
     BrowserModule,
