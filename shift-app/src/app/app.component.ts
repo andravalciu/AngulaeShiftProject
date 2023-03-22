@@ -8,6 +8,7 @@ import { AuthentificationService } from './service/authentification.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  title: any;
   constructor(
     public authService: AuthentificationService,
     private router: Router
