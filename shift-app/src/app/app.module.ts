@@ -24,6 +24,9 @@ import { UserLoginComponent } from './components/login/user-login/user-login.com
 import { UserRegisterComponent } from './components/register/user-register/user-register.component';
 import { UserHomepageComponent } from './components/homepage/user-homepage/user-homepage.component';
 import { UserShiftsComponentComponent } from './user-shifts-component/user-shifts-component.component';
+// import {AngularFirestore} from '@angular/fire/compat/firestore';
+import { FirebaseApp } from '@angular/fire/app/firebase';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { UserShiftsComponentComponent } from './user-shifts-component/user-shift
     UserRegisterComponent,
     UserHomepageComponent,
     UserShiftsComponentComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,8 @@ import { UserShiftsComponentComponent } from './user-shifts-component/user-shift
     ReactiveFormsModule,
     MatSlideToggleModule,
     HotToastModule.forRoot(),
+    // AngularFirestore
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

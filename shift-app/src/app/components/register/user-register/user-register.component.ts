@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthentificationService } from 'src/app/service/authentification.service';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
+
+
 
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -31,6 +34,8 @@ export function passwordsMatchValidator(): ValidatorFn {
 })
 export class UserRegisterComponent implements OnInit {
   userRegistration = new FormGroup({
+    // admin: new FormControl('false'),
+    // uid: new FormControl(''),
     fName: new FormControl('', [Validators.required,Validators.minLength(2)]),
     lName: new FormControl('', [Validators.required,Validators.minLength(2)]),
     email: new FormControl('', [Validators.email, Validators.required,]),
@@ -62,7 +67,9 @@ export class UserRegisterComponent implements OnInit {
   constructor(
     private authService: AuthentificationService,
     private toast: HotToastService,
-    private router: Router
+    private router: Router,
+    // private firestore: AngularFirestore
+    
   ) {}
   ngOnInit(): void {}
   get fName() {

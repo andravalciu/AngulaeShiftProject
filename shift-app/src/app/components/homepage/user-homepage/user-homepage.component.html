@@ -1,1 +1,1 @@
-<p>user-homepage works!</p>
+<h1 *ngIf="user$ | async as user">Welcome, {{user.displayName}}! </h1>
