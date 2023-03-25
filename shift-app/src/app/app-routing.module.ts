@@ -17,7 +17,7 @@ import { UserShiftsComponentComponent } from './user-shifts-component/user-shift
 
 const redirectToLogin = () => redirectUnauthorizedTo(['adminlogin']);
 const redirectToHome = () => redirectLoggedInTo(['adminhome']);
-const redirectToUserHome= () => redirectLoggedInTo(['userhome']);
+const redirectToUserHome = () => redirectLoggedInTo(['userhome']);
 const routes: Routes = [
   {
     path: 'adminhome',
@@ -36,18 +36,26 @@ const routes: Routes = [
   },
   { path: 'allshifts', component: AdminAllShiftsComponent },
   { path: 'allworkers', component: AdminAllWorkersComponent },
-  { path: 'userhome',
-component: UserHomepageComponent,
-...canActivate(redirectToLogin)},
-  {path: 'userlogin',
-  component: UserLoginComponent,
-  ...canActivate(redirectToUserHome)},
-  {path: 'userregistration',
+  {
+    path: 'userhome',
+    component: UserHomepageComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'userlogin',
+    component: UserLoginComponent,
+    ...canActivate(redirectToUserHome),
+  },
+  {
+    path: 'userregistration',
     component: UserRegisterComponent,
-  ...canActivate(redirectToUserHome)},
-  {path: 'usershifts',
-component: UserShiftsComponentComponent,
-...canActivate(redirectToLogin)}
+    ...canActivate(redirectToUserHome),
+  },
+  {
+    path: 'usershifts',
+    component: UserShiftsComponentComponent,
+    ...canActivate(redirectToLogin),
+  },
 ];
 
 @NgModule({

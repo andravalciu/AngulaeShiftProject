@@ -11,7 +11,7 @@ import { formatCurrency } from '@angular/common';
 import { Observable } from '@firebase/util';
 import { doc, setDoc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
-
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -19,18 +19,16 @@ import { Firestore } from '@angular/fire/firestore';
 export class AuthentificationService {
   currentAdmin$ = authState(this.auth);
 
-  constructor(private auth: Auth, firestore:Firestore) {}
+  constructor(private auth: Auth, private firestore: AngularFirestore) {}
 
   // addUser(user: User): Observable<any>{
   //   const ref= doc(this.firestore, 'Database', user?.uid)
   //   return from(setDoc(ref,user))
   // }
-  
 
   login(email: string, password: string) {
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
-
 
   adminSignUp(
     fName: string,

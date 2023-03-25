@@ -24,9 +24,10 @@ import { UserLoginComponent } from './components/login/user-login/user-login.com
 import { UserRegisterComponent } from './components/register/user-register/user-register.component';
 import { UserHomepageComponent } from './components/homepage/user-homepage/user-homepage.component';
 import { UserShiftsComponentComponent } from './user-shifts-component/user-shifts-component.component';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 // import {AngularFirestore} from '@angular/fire/compat/firestore';
 import { FirebaseApp } from '@angular/fire/app/firebase';
-
 
 @NgModule({
   declarations: [
@@ -40,7 +41,6 @@ import { FirebaseApp } from '@angular/fire/app/firebase';
     UserRegisterComponent,
     UserHomepageComponent,
     UserShiftsComponentComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -48,6 +48,9 @@ import { FirebaseApp } from '@angular/fire/app/firebase';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirestore(() => getFirestore()),
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
@@ -58,7 +61,6 @@ import { FirebaseApp } from '@angular/fire/app/firebase';
     MatSlideToggleModule,
     HotToastModule.forRoot(),
     // AngularFirestore
-    
   ],
   providers: [],
   bootstrap: [AppComponent],
