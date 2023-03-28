@@ -4,10 +4,10 @@ import { AuthentificationService } from 'src/app/service/authentification.servic
 @Component({
   selector: 'app-user-homepage',
   templateUrl: './user-homepage.component.html',
-  styleUrls: ['./user-homepage.component.scss']
+  styleUrls: ['./user-homepage.component.scss'],
 })
 export class UserHomepageComponent {
-  user$ = this.authService.currentAdmin$;
+  user$ = this.authService.currentUser$;
 
   constructor(private authService: AuthentificationService) {}
 }

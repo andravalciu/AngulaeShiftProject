@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User, user } from '@angular/fire/auth';
 import {
   AbstractControl,
   FormControl,
@@ -10,8 +11,11 @@ import {
 import { Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { HotToastService } from '@ngneat/hot-toast';
+import { switchMap, take } from 'rxjs';
 import { AuthentificationService } from 'src/app/service/authentification.service';
-
+import { DatabaseServiceService } from 'src/app/service/database-service.service';
+import { UsersService } from 'src/app/service/users.service';
+import { myUser } from 'src/app/users/user';
 
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -36,19 +40,39 @@ export class AdminRegisterComponent implements OnInit {
 
     const { fName, lName, email, password, confirmPassword, age } =
       this.adminSignUpForm.value;
+
     this.authService
-      .adminSignUp(fName, lName, email, password, confirmPassword, age)
+      .adminSignUp(email, password)
+      .pipe(take(1))
+      .subscribe((res) => {
+        const user: myUser = {
+          uid: res.user.uid,
+          lName: lName,
+          fName: fName,
+          email: email,
+          password: password,
+          confirmPassword: confirmPassword,
+          age: +age,
+          admin: true,
+        };
+        this.usersService.addUser(user);
+        this.router.navigate(['/adminhome']);
+      });
+  }
+  /* this.authService
+      .adminSignUp( email, password)
       .pipe(
+        switchMap(({user:{uid}})=> this.usersService.addUser()),
         this.toast.observe({
-          success: 'Congrats! You are all sign up!',
+          success: 'Congrats! You are all sign up!', 
           loading: 'Signing in!',
           error: ({ message }) => `${message}`,
         })
       )
       .subscribe(() => {
         this.router.navigate(['/adminlogin']);
-      });
-  }
+      }); */
+
   ngOnInit(): void {}
 
   adminSignUpForm = new FormGroup(
@@ -66,7 +90,8 @@ export class AdminRegisterComponent implements OnInit {
   constructor(
     private authService: AuthentificationService,
     private toast: HotToastService,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService
   ) {}
 
   get fName() {

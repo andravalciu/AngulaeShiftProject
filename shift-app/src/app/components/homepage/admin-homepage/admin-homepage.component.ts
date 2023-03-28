@@ -7,7 +7,7 @@ import { AuthentificationService } from 'src/app/service/authentification.servic
   styleUrls: ['./admin-homepage.component.scss'],
 })
 export class AdminHomepageComponent {
-  user$ = this.authService.currentAdmin$;
+  user$ = this.authService.currentUser$;
 
   constructor(private authService: AuthentificationService) {}
 }

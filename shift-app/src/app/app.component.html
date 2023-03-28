@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="center">
     ANGULAR shifts project
 
-    <ng-container *ngIf="authService.currentAdmin$ | async as admin; else loginButton">
+    <ng-container *ngIf="authService.currentUser$ | async as admin; else loginButton">
         <button mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
     </ng-container>
 

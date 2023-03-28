@@ -13,8 +13,6 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { AuthentificationService } from 'src/app/service/authentification.service';
 // import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-
-
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const password = control.get('password')?.value;
@@ -30,20 +28,35 @@ export function passwordsMatchValidator(): ValidatorFn {
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.scss']
+  styleUrls: ['./user-register.component.scss'],
 })
 export class UserRegisterComponent implements OnInit {
-  userRegistration = new FormGroup({
-    // admin: new FormControl('false'),
-    // uid: new FormControl(''),
-    fName: new FormControl('', [Validators.required,Validators.minLength(2)]),
-    lName: new FormControl('', [Validators.required,Validators.minLength(2)]),
-    email: new FormControl('', [Validators.email, Validators.required,]),
-    password: new FormControl('', [Validators.required,  Validators.minLength(6)]),
-    confirmPassword: new FormControl('', Validators.required),
-    age: new FormControl('', [Validators.required, Validators.min(6), Validators.max(130)])
-  },
-  { validators: passwordsMatchValidator() })
+  userRegistration = new FormGroup(
+    {
+      // admin: new FormControl('false'),
+      // uid: new FormControl(''),
+      fName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      lName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+      confirmPassword: new FormControl('', Validators.required),
+      age: new FormControl('', [
+        Validators.required,
+        Validators.min(6),
+        Validators.max(130),
+      ]),
+    },
+    { validators: passwordsMatchValidator() }
+  );
 
   submit() {
     if (!this.userRegistration.valid) return;
@@ -51,7 +64,7 @@ export class UserRegisterComponent implements OnInit {
     const { fName, lName, email, password, confirmPassword, age } =
       this.userRegistration.value;
     this.authService
-      .adminSignUp(fName, lName, email, password, confirmPassword, age)
+      .adminSignUp(email, password)
       .pipe(
         this.toast.observe({
           success: 'Congrats! You are all sign up!',
@@ -67,10 +80,10 @@ export class UserRegisterComponent implements OnInit {
   constructor(
     private authService: AuthentificationService,
     private toast: HotToastService,
-    private router: Router,
-    // private firestore: AngularFirestore
-    
-  ) {}
+    private router: Router
+  ) // private firestore: AngularFirestore
+
+  {}
   ngOnInit(): void {}
   get fName() {
     return this.userRegistration.get('fName');

@@ -6,20 +6,40 @@ import {
   User,
 } from 'firebase/auth';
 import { Auth, authState } from '@angular/fire/auth';
-import { from, switchMap } from 'rxjs';
+import { BehaviorSubject, from, switchMap } from 'rxjs';
 import { formatCurrency } from '@angular/common';
 import { Observable } from '@firebase/util';
 import { doc, setDoc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthentificationService {
-  currentAdmin$ = authState(this.auth);
+  currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth, private firestore: AngularFirestore) {}
+  /* insert(
+    uid: string,
+    fName: string,
+    lName: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    admin: boolean
+  ) {
+    this.firestore.collection('Database').doc(uid).set({
+      email: email,
+      admin: admin,
+    });
+  } */
+
+  constructor(
+    private auth: Auth,
+    private firebaseAuth: AngularFireAuth,
+    private firestore: AngularFirestore
+  ) {}
 
   // addUser(user: User): Observable<any>{
   //   const ref= doc(this.firestore, 'Database', user?.uid)
@@ -30,19 +50,8 @@ export class AuthentificationService {
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  adminSignUp(
-    fName: string,
-    lName: string,
-    email: string,
-    password: string,
-    confirmPassword: string,
-    age: string
-  ) {
-    return from(
-      createUserWithEmailAndPassword(this.auth, email, password)
-    ).pipe(
-      switchMap(({ user }) => updateProfile(user, { displayName: fName }))
-    );
+  adminSignUp(email: string, password: string) {
+    return from(createUserWithEmailAndPassword(this.auth, email, password));
   }
 
   logout() {
