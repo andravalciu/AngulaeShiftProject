@@ -14,6 +14,8 @@ import { UserHomepageComponent } from './components/homepage/user-homepage/user-
 import { UserLoginComponent } from './components/login/user-login/user-login.component';
 import { UserRegisterComponent } from './components/register/user-register/user-register.component';
 import { UserShiftsComponentComponent } from './user-shifts-component/user-shifts-component.component';
+import { UserEditComponent } from './components/editprofile/user-edit/user-edit.component';
+import { AdminEditProfileComponent } from './components/editprofile/admin-edit-profile/admin-edit-profile.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['adminlogin']);
 const redirectToHome = () => redirectLoggedInTo(['adminhome']);
@@ -33,6 +35,11 @@ const routes: Routes = [
     path: 'adminregister',
     component: AdminRegisterComponent,
     ...canActivate(redirectToHome),
+  },
+  {
+    path: 'admineditprofile',
+    component: AdminEditProfileComponent,
+    ...canActivate(redirectToLogin)
   },
   { path: 'allshifts', component: AdminAllShiftsComponent },
   { path: 'allworkers', component: AdminAllWorkersComponent },
@@ -56,6 +63,11 @@ const routes: Routes = [
     component: UserShiftsComponentComponent,
     ...canActivate(redirectToLogin),
   },
+  {
+    path: 'usereditprofile',
+    component: UserEditComponent,
+    ...canActivate(redirectToLogin)
+  }
 ];
 
 @NgModule({

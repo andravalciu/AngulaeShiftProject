@@ -77,12 +77,25 @@ export class AdminRegisterComponent implements OnInit {
 
   adminSignUpForm = new FormGroup(
     {
-      fName: new FormControl('', Validators.required),
-      lName: new FormControl('', Validators.required),
+      fName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      lName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
       email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', Validators.required),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
       confirmPassword: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required),
+      age: new FormControl('', [
+        Validators.required,
+        Validators.min(6),
+        Validators.max(130),
+      ]),
     },
     { validators: passwordsMatchValidator() }
   );

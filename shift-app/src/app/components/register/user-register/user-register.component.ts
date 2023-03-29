@@ -10,8 +10,12 @@ import {
 import { Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { HotToastService } from '@ngneat/hot-toast';
+import { take } from 'rxjs';
 import { AuthentificationService } from 'src/app/service/authentification.service';
 // import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { DatabaseServiceService } from 'src/app/service/database-service.service';
+import { UsersService } from 'src/app/service/users.service';
+import { myUser } from 'src/app/users/user';
 
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -65,14 +69,19 @@ export class UserRegisterComponent implements OnInit {
       this.userRegistration.value;
     this.authService
       .adminSignUp(email, password)
-      .pipe(
-        this.toast.observe({
-          success: 'Congrats! You are all sign up!',
-          loading: 'Signing in!',
-          error: ({ message }) => `${message}`,
-        })
-      )
-      .subscribe(() => {
+      .pipe(take(1))
+      .subscribe((res) => {
+        const user: myUser = {
+          uid: res.user.uid,
+          lName: lName,
+          fName: fName,
+          email: email,
+          password: password,
+          confirmPassword: confirmPassword,
+          age: +age,
+          admin: false,
+        };
+        this.usersService.addUser(user);
         this.router.navigate(['/userlogin']);
       });
   }
@@ -80,7 +89,8 @@ export class UserRegisterComponent implements OnInit {
   constructor(
     private authService: AuthentificationService,
     private toast: HotToastService,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService
   ) // private firestore: AngularFirestore
 
   {}

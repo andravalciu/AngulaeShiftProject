@@ -10,13 +10,13 @@
           <mat-form-field>
             <input matInput placeholder="Last Name" formControlName="lName">
             <mat-error *ngIf="lName?.errors?.['required']">Last name is required</mat-error>
-            <mat-error *ngIf="lName?.errors?.['minlength']">First Name has to be at least 2 characters long</mat-error>
+            <mat-error *ngIf="lName?.errors?.['minlength']">Last Name has to be at least 2 characters long</mat-error>
           </mat-form-field>
 
         <mat-form-field>
           <input matInput placeholder="Email adress" formControlName="email">
           <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
-          <mat-error *ngIf="email?.errors?.['email']">Email is required</mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">Please use a valid email</mat-error>
         </mat-form-field>
       
         <mat-form-field>
