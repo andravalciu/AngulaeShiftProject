@@ -28,6 +28,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 // import {AngularFirestore} from '@angular/fire/compat/firestore';
 import { FirebaseApp } from '@angular/fire/app/firebase';
+import { AdminEditProfileComponent } from './components/editprofile/admin-edit-profile/admin-edit-profile.component';
+import { UserEditComponent } from './components/editprofile/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { FirebaseApp } from '@angular/fire/app/firebase';
     UserRegisterComponent,
     UserHomepageComponent,
     UserShiftsComponentComponent,
+    AdminEditProfileComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
