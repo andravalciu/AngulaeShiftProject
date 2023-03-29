@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { user } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthentificationService } from 'src/app/service/authentification.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-admin-homepage',
@@ -9,5 +12,9 @@ import { AuthentificationService } from 'src/app/service/authentification.servic
 export class AdminHomepageComponent {
   user$ = this.authService.currentUser$;
 
-  constructor(private authService: AuthentificationService) {}
+  constructor(
+    private authService: AuthentificationService,
+    private usersService: UsersService,
+    private firestore: AngularFirestore
+  ) {}
 }

@@ -1,3 +1,4 @@
-<p>admin-homepage works!</p>
-<h1 *ngIf="user$ | async as user">Welcome, {{user.displayName}}! </h1>
+
 <button mat-button routerLink="/admineditprofile"><mat-icon>user-edit</mat-icon>Edit Admin Profile</button>
+<button mat-button routerLink="/allworkers"><mat-icon>user-edit</mat-icon>All workers</button>
+<h1 *ngIf="user$ | async as user">Welcome, {{user.displayName}}! </h1>

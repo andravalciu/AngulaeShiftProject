@@ -59,43 +59,17 @@ export class AdminRegisterComponent implements OnInit {
         this.router.navigate(['/adminhome']);
       });
   }
-  /* this.authService
-      .adminSignUp( email, password)
-      .pipe(
-        switchMap(({user:{uid}})=> this.usersService.addUser()),
-        this.toast.observe({
-          success: 'Congrats! You are all sign up!', 
-          loading: 'Signing in!',
-          error: ({ message }) => `${message}`,
-        })
-      )
-      .subscribe(() => {
-        this.router.navigate(['/adminlogin']);
-      }); */
 
   ngOnInit(): void {}
 
   adminSignUpForm = new FormGroup(
     {
-      fName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
-      lName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
+      fName: new FormControl('', Validators.required),
+      lName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
+      password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
-      age: new FormControl('', [
-        Validators.required,
-        Validators.min(6),
-        Validators.max(130),
-      ]),
+      age: new FormControl('', Validators.required),
     },
     { validators: passwordsMatchValidator() }
   );

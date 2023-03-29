@@ -20,31 +20,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthentificationService {
   currentUser$ = authState(this.auth);
 
-  /* insert(
-    uid: string,
-    fName: string,
-    lName: string,
-    email: string,
-    password: string,
-    confirmPassword: string,
-    admin: boolean
-  ) {
-    this.firestore.collection('Database').doc(uid).set({
-      email: email,
-      admin: admin,
-    });
-  } */
 
   constructor(
     private auth: Auth,
     private firebaseAuth: AngularFireAuth,
     private firestore: AngularFirestore
   ) {}
-
-  // addUser(user: User): Observable<any>{
-  //   const ref= doc(this.firestore, 'Database', user?.uid)
-  //   return from(setDoc(ref,user))
-  // }
 
   login(email: string, password: string) {
     return from(signInWithEmailAndPassword(this.auth, email, password));
