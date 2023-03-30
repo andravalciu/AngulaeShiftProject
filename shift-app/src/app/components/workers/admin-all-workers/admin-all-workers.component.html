@@ -1,8 +1,9 @@
-<p>admin-all-workers works!</p>
-<table>
+
+<div class="divAllWorkersTable"></div>
+<table  class="allWorkersTable ">
     <thead>
       <tr>
-        <th>Email</th>
+        <th >Email</th>
         <th>Password</th>
         <th>First Name</th>
         <th>Last Name</th>
@@ -12,15 +13,10 @@
     <tbody>
       <!-- Iterate through each worker in the Database collection -->
       <tr *ngFor="let worker of workers">
-        <!-- Display the worker's email as a hyperlink that navigates to their profile page -->
         <td><a [routerLink]="['/edit-profile', worker.email]">{{worker.email}}</a></td>
-        <!-- Display the worker's password (masked for security reasons) -->
         <td>{{worker.password}}</td>
-        <!-- Display the worker's first name -->
         <td>{{worker.fName}}</td>
-        <!-- Display the worker's last name -->
         <td>{{worker.lName}}</td>
-        <!-- Display the worker's age -->
         <td>{{worker.age}}</td>
       </tr>
     </tbody>

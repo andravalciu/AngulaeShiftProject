@@ -27,7 +27,9 @@ import { UserShiftsComponentComponent } from './user-shifts-component/user-shift
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 // import {AngularFirestore} from '@angular/fire/compat/firestore';
-import { FirebaseApp } from '@angular/fire/app/firebase';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { AdminEditProfileComponent } from './components/editprofile/admin-edit-profile/admin-edit-profile.component';
 import { UserEditComponent } from './components/editprofile/user-edit/user-edit.component';
 
@@ -61,6 +63,9 @@ import { UserEditComponent } from './components/editprofile/user-edit/user-edit.
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
     HotToastModule.forRoot(),
