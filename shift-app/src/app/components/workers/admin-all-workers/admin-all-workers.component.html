@@ -1,3 +1,5 @@
+<button mat-button routerLink="/allshifts"><mat-icon>user-edit</mat-icon>All Shifts</button>
+<button mat-button routerLink="/adminhome"><mat-icon>user-edit</mat-icon>Back to admin Homepage</button>
 
 <div class="divAllWorkersTable"></div>
 <table  class="allWorkersTable ">
@@ -8,6 +10,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Age</th>
+        <th>Edit Profile button</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +21,7 @@
         <td>{{worker.fName}}</td>
         <td>{{worker.lName}}</td>
         <td>{{worker.age}}</td>
+        <td><button  mat-button [routerLink]="['/edit-profile', worker.email]">Edit Profile</button></td>
       </tr>
     </tbody>
   </table>
