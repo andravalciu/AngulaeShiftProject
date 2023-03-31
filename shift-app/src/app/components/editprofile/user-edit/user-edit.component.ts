@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/app/service/authentification.service';
+import { passwordsMatchValidator } from '../../register/admin-register/admin-register.component';
 
 @Component({
   selector: 'app-user-edit',
@@ -19,7 +20,7 @@ export class UserEditComponent implements OnInit {
     confirmNewPassword: new FormControl('',[Validators.required, Validators.minLength(6)]),
 
     age: new FormControl('', [Validators.required, Validators.min(6), Validators.max(130)])
-  });
+  },{validators: passwordsMatchValidator()});
 
   constructor(private router: Router, private firestore: AngularFirestore, private authService: AuthentificationService) {}
 

@@ -39,13 +39,10 @@ const routes: Routes = [
   {
     path: 'admineditprofile',
     component: AdminEditProfileComponent,
-    ...canActivate(redirectToLogin),
+    ...canActivate(redirectToLogin)
   },
   { path: 'allshifts', component: AdminAllShiftsComponent },
   { path: 'allworkers', component: AdminAllWorkersComponent },
-  { path: 'all-workers', component: AdminAllWorkersComponent },
-  { path: 'edit-profile/:email', component: AdminEditProfileComponent },
-  { path: '', redirectTo: '/all-workers', pathMatch: 'full' },
   {
     path: 'userhome',
     component: UserHomepageComponent,
@@ -69,8 +66,13 @@ const routes: Routes = [
   {
     path: 'usereditprofile',
     component: UserEditComponent,
-    ...canActivate(redirectToLogin),
+    ...canActivate(redirectToLogin)
   },
+  {
+    path: 'usershifts',
+    component: UserShiftsComponentComponent,
+    ...canActivate(redirectToLogin)
+  }
 ];
 
 @NgModule({

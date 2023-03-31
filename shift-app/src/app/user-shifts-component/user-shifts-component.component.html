@@ -1,1 +1,42 @@
-<p>user-shifts-component works!</p>
+<h1>My Shifts</h1>
+
+<div class="filters">
+  <label for="shiftPlace">Shift Place:</label>
+  <input type="text" id="shiftPlace" name="shiftPlace" [(ngModel)]="shiftPlace">
+  
+  <label for="fromDate">From Date:</label>
+  <input type="date" id="fromDate" name="fromDate" [(ngModel)]="fromDate">
+  
+  <label for="toDate">To Date:</label>
+  <input type="date" id="toDate" name="toDate" [(ngModel)]="toDate">
+  
+  <label for="hourlyWage">Hourly Wage:</label>
+  <input type="number" id="hourlyWage" name="hourlyWage" [(ngModel)]="hourlyWage">
+  
+  <button (click)="addShift()">Add Shift</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Price Per Hour</th>
+      <th>Shift Place</th>
+      <th>Total Profit</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shift of shifts">
+      <td>{{ shift.date.toDate() | date }}</td>
+      <td>{{ shift.startTime }}</td>
+      <td>{{ shift.endTime }}</td>
+      <td>{{ shift.hourlyWage | currency }}</td>
+      <td>{{ shift.workplace }}</td>
+      <td>{{ shift.totalProfit | currency }}</td>
+      <td><a [routerLink]="['']">Edit</a></td>
+    </tr>
+  </tbody>
+</table>

@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { UserLoginComponent } from './components/login/user-login/user-login.component';
@@ -69,6 +69,7 @@ import { UserEditComponent } from './components/editprofile/user-edit/user-edit.
     ReactiveFormsModule,
     MatSlideToggleModule,
     HotToastModule.forRoot(),
+    FormsModule,
     // AngularFirestore
   ],
   providers: [],
