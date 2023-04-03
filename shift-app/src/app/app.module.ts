@@ -32,6 +32,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { AdminEditProfileComponent } from './components/editprofile/admin-edit-profile/admin-edit-profile.component';
 import { UserEditComponent } from './components/editprofile/user-edit/user-edit.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card'; // import MatCardModule
+
 
 @NgModule({
   declarations: [
@@ -70,6 +74,10 @@ import { UserEditComponent } from './components/editprofile/user-edit/user-edit.
     MatSlideToggleModule,
     HotToastModule.forRoot(),
     FormsModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatCardModule
+    
     // AngularFirestore
   ],
   providers: [],
