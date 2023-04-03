@@ -15,7 +15,8 @@ export class AdminAllWorkersComponent implements OnInit {
   displayedColumns: string[] = ['email', 'password', 'fName', 'lName', 'age'];
   pageSize = 10;
   ngOnInit(): void {
-    // Fetch the workers data from Firestore and assign it to the workers property
+    // Fetching workers data from Firestore and assign it to the workers property
+
     this.firestore
       .collection('Database')
       .get()

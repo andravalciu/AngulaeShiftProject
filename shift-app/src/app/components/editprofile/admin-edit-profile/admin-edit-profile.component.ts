@@ -13,6 +13,7 @@ import { AdminAllWorkersComponent } from '../../workers/admin-all-workers/admin-
 })
 export class AdminEditProfileComponent implements OnInit {
   user$ = this.authService.currentUser$;
+
   userUpdateAdmin = new FormGroup(
     {
       fName: new FormControl('', [
@@ -50,10 +51,10 @@ export class AdminEditProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.user$);
     // Get the email parameter from the route
     this.route.params.subscribe((params) => {
       const email = params['email'];
-      // Fetch the user's data from Firestore and assign it to the userUpdateAdmin form
       this.firestore
         .collection('Database', (ref) => ref.where('email', '==', email))
         .get()
@@ -95,7 +96,7 @@ export class AdminEditProfileComponent implements OnInit {
                 confirmPassword,
               });
               console.log('User updated successfully!');
-              this.router.navigate(['/all-workers']);
+              this.router.navigate(['/allworkers']);
             });
           });
       });

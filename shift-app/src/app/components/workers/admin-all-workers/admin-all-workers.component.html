@@ -16,12 +16,12 @@
     <tbody>
       <!-- Iterate through each worker in the Database collection -->
       <tr *ngFor="let worker of workers">
-        <td><a [routerLink]="['/edit-profile', worker.email]">{{worker.email}}</a></td>
+        <td><a [routerLink]="['/admineditprofile', worker.email]">{{worker.email}}</a></td>
         <td>{{worker.password}}</td>
         <td>{{worker.fName}}</td>
         <td>{{worker.lName}}</td>
         <td>{{worker.age}}</td>
-        <td><button  mat-button [routerLink]="['/edit-profile', worker.email]">Edit Profile</button></td>
+        <td><button  mat-button [routerLink]="['/admineditprofile', worker.email]">Edit Profile</button></td>
       </tr>
     </tbody>
   </table>

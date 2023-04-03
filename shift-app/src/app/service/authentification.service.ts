@@ -20,7 +20,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthentificationService {
   currentUser$ = authState(this.auth);
 
-
   constructor(
     private auth: Auth,
     private firebaseAuth: AngularFireAuth,

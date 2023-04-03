@@ -15,6 +15,7 @@ import { AdminAllWorkersComponent } from './components/workers/admin-all-workers
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +33,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { AdminEditProfileComponent } from './components/editprofile/admin-edit-profile/admin-edit-profile.component';
 import { UserEditComponent } from './components/editprofile/user-edit/user-edit.component';
+import { AdminEditAShiftComponent } from './components/shifts/admin-edit-a-shift/admin-edit-a-shift.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { UserEditComponent } from './components/editprofile/user-edit/user-edit.
     UserShiftsComponentComponent,
     AdminEditProfileComponent,
     UserEditComponent,
+    AdminEditAShiftComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { UserEditComponent } from './components/editprofile/user-edit/user-edit.
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    MatDialogModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
