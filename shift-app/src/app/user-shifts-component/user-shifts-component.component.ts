@@ -16,18 +16,6 @@ import { HotToastService } from '@ngneat/hot-toast';
 
 export class UserShiftsComponentComponent implements OnInit {
 
-  // endTimeBeforeStartTimeValidator(): ValidatorFn {
-  //   return (control: AbstractControl): { [key: string]: any } | null => {
-  //     const startTime = control.get('startHour').value;
-  //     const endTime = control.get('endHour').value;
-      
-  //     if (startTime && endTime && startTime >= endTime) {
-       
-  //       return {  endTimeBeforeStartTime: 'End time cannot be before start time'};
-  //     }
-  //     return null;
-  //   };
-  // }
  
   shifts$: Observable<any[]>;
   shiftForm: FormGroup;
@@ -69,7 +57,6 @@ export class UserShiftsComponentComponent implements OnInit {
     }
   }
 
-
   
   payOptions: any[] = [
     { label: 'Normal', value: 1 },
@@ -77,17 +64,9 @@ export class UserShiftsComponentComponent implements OnInit {
     { label: 'Double Time (x2)', value: 2 }
   ];
 
-  constructor(private firestore: AngularFirestore, private formBuilder: FormBuilder,  private afAuth: AngularFireAuth, private toastr: HotToastService) {
-   
-
-  }
-
- 
- 
+  constructor(private firestore: AngularFirestore, private formBuilder: FormBuilder,  private afAuth: AngularFireAuth, private toastr: HotToastService) {}
 
   ngOnInit() {
-   
-    
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.uid = user.uid;
@@ -113,17 +92,12 @@ export class UserShiftsComponentComponent implements OnInit {
       comments: ['', Validators.required],
       
     });
-  
- 
   }
-
-
   getShifts() {
      this.firestore.collection('users').doc(this.uid).collection('Shifts').valueChanges().subscribe((shifts: any[]) => {
       this.shifts = shifts;
      });
  }
-
   addShift() {
     const { date, startHour, endHour, location, payOption, uniqueId, comments } = this.shiftForm.value;
 
@@ -142,7 +116,6 @@ export class UserShiftsComponentComponent implements OnInit {
     this.toastr.error('The end time cannot be before the start time.');
     return;
   }
-
   this.firestore.collection('users').doc(this.uid).collection('Shifts').ref.where('uniqueId', '==', uniqueId).get().then((snapshot) => {
     if (snapshot.size > 0) {
       // Unique Id already exists in Firestore database
@@ -150,7 +123,6 @@ export class UserShiftsComponentComponent implements OnInit {
     } else {
       // Unique Id does not exist in Firestore database, add new shift
       const hoursWorked = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60);
-
       let payRate = this.normalPayRate;
       let payTypeMultiplier = payOption === 1 ? 1 : payOption === 1.5 ? 1.5 : 2;
       const profit = hoursWorked * payTypeMultiplier * payRate;
@@ -172,9 +144,5 @@ export class UserShiftsComponentComponent implements OnInit {
       });
     }
   });
-   
- 
- 
   }
-   
 }
