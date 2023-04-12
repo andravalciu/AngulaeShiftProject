@@ -14,19 +14,7 @@ export class DatabaseServiceService {
   addShift(value: any) {
     throw new Error('Method not implemented.');
   }
-  /*  get currentUserProfile$(): Observable<User | null> {
-    return this.authService.currentUser$.pipe(
-      switchMap((user) => {
-        if (!user?.uid) {
-          return of(null);
-        }
 
-        const ref = doc(this.firestore, 'Database', user?.uid);
-        return docData(ref) as Observable<User>;
-      })
-    );
-  }
- */
   constructor(
     private firestore: AngularFirestore,
     private authService: AuthentificationService
@@ -44,14 +32,4 @@ export class DatabaseServiceService {
       });
     return data;
   }
-  
-
-  
-
-  /*  addUser(user: User): Observable<any> {
-    const ref = doc(this.firestore, 'Database', user?.uid);
-    return from(setDoc(ref, user));
-  } */
 }
-
-// update user function for Edit profile page profile

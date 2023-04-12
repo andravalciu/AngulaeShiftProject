@@ -31,6 +31,4 @@ export class UsersService {
     const ref = doc(this.firestore, 'Database', user?.uid);
     return from(setDoc(ref, user));
   }
-
-  // update user function for Edit page
 }

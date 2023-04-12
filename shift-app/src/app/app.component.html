@@ -1,12 +1,12 @@
 <mat-toolbar color="primary" class="center">
     <img src="assets/logo-no-background.svg" alt="Logo">
-    <ng-container *ngIf="authService.currentUser$ | async as admin; else loginButton">
+    <ng-container *ngIf="authService.currentUser$ | async as admin; ">
         <button mat-button routerLink = "usereditprofile"><mat-icon>account_box</mat-icon>Edit Profile</button>
     </ng-container>
-    <ng-container *ngIf="authService.currentUser$ | async as admin; else loginButton">
+    <ng-container *ngIf="authService.currentUser$ | async as admin;">
         <button mat-button routerLink = "userhome"><mat-icon>home</mat-icon>Homepage</button>
     </ng-container>
-    <ng-container *ngIf="authService.currentUser$ | async as admin; else loginButton">
+    <ng-container *ngIf="authService.currentUser$ | async as admin; ">
         <button mat-button routerLink = "usershifts"><mat-icon>add_location</mat-icon>Add Shifts</button>
     </ng-container>
     <ng-container *ngIf="authService.currentUser$ | async as admin; else loginButton">
