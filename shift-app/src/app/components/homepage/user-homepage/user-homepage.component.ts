@@ -13,8 +13,9 @@ import { myUser } from 'src/app/users/user';
   styleUrls: ['./user-homepage.component.scss'],
 })
 export class UserHomepageComponent implements OnInit {
+
   currentUserProfile$: Observable<myUser | null>;
-  shifts$: Observable<any[]>;
+  shifts$: Observable<any[]> 
   shiftForm: FormGroup;
   currentUserUid: string;
   locationOptions: string[] = ['Oradea', 'Timisoara', 'Bucuresti'];
@@ -30,9 +31,11 @@ export class UserHomepageComponent implements OnInit {
   location: string
   uniqueId: string;
   comments: string;
+  searchText = '';
 
 
-  
+
+
   calculateBestMonth() {
     
     let monthTotals: {[key: string]: number} = {};
@@ -53,6 +56,7 @@ export class UserHomepageComponent implements OnInit {
       }
     }
   }
+ 
 
 
   

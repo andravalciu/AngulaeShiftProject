@@ -52,7 +52,7 @@ export class UserLoginComponent implements OnInit {
       })
     )
     .subscribe(() => {
-      this.router.navigate(['/adminhome']);
+      this.router.navigate(['/userhome']);
     });
 }
  

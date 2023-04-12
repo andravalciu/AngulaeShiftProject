@@ -54,6 +54,7 @@ export class AdminRegisterComponent implements OnInit {
           confirmPassword: confirmPassword,
           age: +age,
           admin: true,
+          date: undefined
         };
         this.usersService.addUser(user);
         this.router.navigate(['/adminhome']);

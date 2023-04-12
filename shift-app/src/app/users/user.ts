@@ -1,4 +1,5 @@
 export interface myUser {
+  date: any;
   uid: string;
   lName?: string;
   fName?: string;

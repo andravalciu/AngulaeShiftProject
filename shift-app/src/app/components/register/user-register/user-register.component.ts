@@ -80,6 +80,7 @@ export class UserRegisterComponent implements OnInit {
           confirmPassword: confirmPassword,
           age: +age,
           admin: false,
+          date: undefined
         };
         this.usersService.addUser(user);
         this.router.navigate(['/userlogin']);

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from './service/authentification.service';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +9,11 @@ import { AuthentificationService } from './service/authentification.service';
 })
 export class AppComponent {
   title: any;
-  constructor(
+  constructor(private sanitizer: DomSanitizer,
     public authService: AuthentificationService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   logout() {
     this.authService.logout().subscribe(() => {

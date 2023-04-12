@@ -36,7 +36,10 @@ import { UserEditComponent } from './components/editprofile/user-edit/user-edit.
 import { AdminEditAShiftComponent } from './components/shifts/admin-edit-a-shift/admin-edit-a-shift.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { MatCardModule } from '@angular/material/card'; // import MatCardModule
+import { MatCardModule } from '@angular/material/card';
+import { UserPasswordResetComponent } from './components/user-password-reset/user-password-reset.component';
+import { SearchPipe } from './search.pipe'; // import MatCardModule
+
 
 @NgModule({
   declarations: [
@@ -52,6 +55,8 @@ import { MatCardModule } from '@angular/material/card'; // import MatCardModule
     UserShiftsComponentComponent,
     AdminEditProfileComponent,
     UserEditComponent,
+    UserPasswordResetComponent,
+    SearchPipe,
     AdminEditAShiftComponent,
   ],
   imports: [
