@@ -11,6 +11,9 @@ import { AuthentificationService } from './authentification.service';
   providedIn: 'root',
 })
 export class DatabaseServiceService {
+  addShift(value: any) {
+    throw new Error('Method not implemented.');
+  }
   /*  get currentUserProfile$(): Observable<User | null> {
     return this.authService.currentUser$.pipe(
       switchMap((user) => {
@@ -41,6 +44,9 @@ export class DatabaseServiceService {
       });
     return data;
   }
+  
+
+  
 
   /*  addUser(user: User): Observable<any> {
     const ref = doc(this.firestore, 'Database', user?.uid);

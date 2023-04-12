@@ -1,9 +1,11 @@
-
+<mat-card>
+    <mat-card-title>Update User Profile</mat-card-title>
+  </mat-card>
 <div
   class="form-container mat-elevation-z5 text-center"
  
 >
-    <h1>Update User Profile</h1>
+    
     <form [formGroup]="userUpdate" (ngSubmit)="update()"> 
         <mat-form-field>
             <input matInput placeholder="First Name" formControlName="fName">
